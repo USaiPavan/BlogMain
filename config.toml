@@ -20,9 +20,6 @@ canonifyurls = true
     Author = "Sai Pavan"    
 	sidebartitle = "Sai Pavan's blog"
 	sidebartagline = "My tryst with .net and software programming in general"
-[[menu.main]]
-    name = "Blog"
-    url = "/list"
 [[menu.social]]
 	pre = "<i class='fa fa-twitter fa-lg fa-fw'></i>"
     url = "https://twitter.com/usaipavan"
