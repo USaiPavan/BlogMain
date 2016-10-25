@@ -11,6 +11,7 @@ canonifyurls = true
 [permalinks]
     post = "/:year/:month/:filename/"
     code = "/:filename/"
+  
 [Taxonomies]
     tag = "tags"
     series = "series"
