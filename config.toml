@@ -1,0 +1,36 @@
+title = "Sai Pavan's blog"
+languageCode = "en-us"
+baseurl = "https://usaipavan.github.io/"
+copyright = "(c) 2016 Sai Pavan."
+disqusShortname = "usaipavan"
+contentdir = "content/post"
+layoutdir = "layouts"
+publishdir = "public"
+canonifyurls = true
+
+[permalinks]
+    post = "/:year/:month/:filename/"
+    code = "/:filename/"
+[Taxonomies]
+    tag = "tags"
+    series = "series"
+    series-desc = "series-desc"
+[params]
+    Author = "Sai Pavan"    
+	sidebartitle = "Sai Pavan's blog"
+	sidebartagline = "My tryst with .net and software programming in general"
+[[menu.main]]
+    name = "Blog"
+    url = "/list"
+[[menu.social]]
+	pre = "<i class='fa fa-twitter fa-lg fa-fw'></i>"
+    url = "https://twitter.com/usaipavan"
+    identifier = "twitter"
+[[menu.social]]
+    pre = "<i class='fa fa-linkedin fa-lg fa-fw'></i>"
+    url = "https://www.linkedin.com/in/usaipavan"
+    identifier = "linkedin"
+[[menu.social]]
+    pre = "<i class='fa fa-rss fa-lg fa-fw'></i>"
+    url = "https://www.linkedin.com/in/usaipavan"
+    identifier = "rss"
