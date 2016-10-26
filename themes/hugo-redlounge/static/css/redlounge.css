@@ -59,6 +59,13 @@ h1 {
 	background: #eee;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+  margin: 0 0 1rem;
+  border-radius: 5px;
+}
+
 /* Layout */
 .pure-img-responsive {
     max-width: 100%;
