@@ -2,7 +2,6 @@
 title = "The mystery around DbEntityEntry.State"
 draft = false
 date = "2016-07-06T09:00:00-05:00"
-author = "Sai Pavan"
 Tags = ["C#", "Entity Framework"]
 
 +++

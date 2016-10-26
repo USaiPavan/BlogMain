@@ -2,7 +2,6 @@
 title = "Trim extra spaces in strings on objects recursively"
 draft = false
 date = "2016-02-27T09:00:00-05:00"
-author = "Sai Pavan"
 Tags = ["C#"]
 
 +++
