@@ -9,7 +9,7 @@
 
           <div class="posts">
             {{ $Site := .Site }}
-            {{ range where .Data.Pages "Section" "post" }}
+            {{ range where (.Paginator).Pages "Section" "post"}}  
             <section  class="post">
                 <header class="post-header">
                     {{ if .Params.thumbnail }}
@@ -60,8 +60,17 @@
             {{ end }}
           </section>
           {{ end }}
-        </div>
-
+        </div>        
+        {{ if .Paginator.HasPrev }}
+            <a class="btn btn-default pad-button" href="{{ .Paginator.Prev.URL }}">
+                < Previous
+            </a>
+        {{ end }}
+        {{ if .Paginator.HasNext }}
+            <a class="btn btn-default pad-button" href="{{ .Paginator.Next.URL }}" style="float: right">
+                Next >
+            </a>
+        {{ end }}
         {{ partial "footer.html" . }}
         </div>
     </div>

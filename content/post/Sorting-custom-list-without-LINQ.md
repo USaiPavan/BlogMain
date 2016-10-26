@@ -17,7 +17,7 @@ So here is the code that I have written to be able to achieve that feat..
 
 First my custom type (obviously different from what I have worked on but is similar)
 
-~~~ csharp
+```csharp
 class TrainingEmployee
 {
     public int Count { get; set; }        
@@ -27,24 +27,58 @@ class TrainingEmployee
     public string EmployeeNumber { get; set; }
     public string EmployeeName { get; set; }                
 }
-~~~
-
-
+```
 Now easier way to sort the custom type list
 
-~~~ csharp
+```csharp
 public void BuildAndSortEmployees()
 {
     List<TrainingEmployee> employees = new List<TrainingEmployee>();
-    employees.Add(new TrainingEmployee { Count = 10, DueStatus = "Due", EmployeeName = "Tom", EmployeeNumber = "2", LocationName = "Hogwarts", TrainingTypeName = "bca" });
-    employees.Add(new TrainingEmployee { Count = 5, DueStatus = "Due", EmployeeName = "Riddle", EmployeeNumber = "12", LocationName = "DiagonAlley", TrainingTypeName = "bca" });
-    employees.Add(new TrainingEmployee { Count = 8, DueStatus = "Due", EmployeeName = "Lord", EmployeeNumber = "22", LocationName = "PrivetDrive", TrainingTypeName = "bca" });
-    employees.Add(new TrainingEmployee { Count = 12, DueStatus = "Due", EmployeeName = "Voldemort", EmployeeNumber = "8", LocationName = "TestLocation", TrainingTypeName = "bca" });
-    
-    employees.Sort((x, y) => { var ret = x.EmployeeName.CompareTo(y.EmployeeName); return ret; });
-}
-~~~
+    employees.Add(new TrainingEmployee
+    {
+        Count = 10,
+        DueStatus = "Due",
+        EmployeeName = "Tom",
+        EmployeeNumber = "2",
+        LocationName = "Hogwarts",
+        TrainingTypeName = "bca"
+    });
+    employees.Add(new TrainingEmployee
+    {
+        Count = 5,
+        DueStatus = "Due",
+        EmployeeName = "Riddle",
+        EmployeeNumber = "12",
+        LocationName = "DiagonAlley",
+        TrainingTypeName = "bca"
+    });
+    employees.Add(new TrainingEmployee
+    {
+        Count = 8,
+        DueStatus = "Due",
+        EmployeeName = "Lord",
+        EmployeeNumber = "22",
+        LocationName = "PrivetDrive",
+        TrainingTypeName = "bca"
+    });
+    employees.Add(new TrainingEmployee
+    {
+        Count = 12,
+        DueStatus = "Due",
+        EmployeeName = "Voldemort",
+        EmployeeNumber = "8",
+        LocationName = "TestLocation",
+        TrainingTypeName = "bca"
+    });
 
-The *EmployeeName* property can be literally be replaced with any of the properties in the TrainingEmployee class and the sorty just works. Here we are using the Array.Sort and also using the [CompareTo](https://msdn.microsoft.com/en-us/library/system.icomparable.compareto(v=vs.110).aspx) we are comparing the primitive data types. This won't work out of the box for custom data types, if any, in *TrainingEmployee* class but requires a EqualityComparer implementation of the custom data type
+    employees.Sort((x, y) =>
+    {
+        var ret = x.EmployeeName.CompareTo(y.EmployeeName);
+        return ret;
+    });
+}
+```
+
+The *EmployeeName* property can be literally be replaced with any of the properties in the TrainingEmployee class and the sort just works. Here we are using the Array.Sort and also using the [CompareTo](https://msdn.microsoft.com/en-us/library/system.icomparable.compareto(v=vs.110).aspx) we are comparing the primitive data types. This won't work out of the box for custom data types, if any, in *TrainingEmployee* class but requires a EqualityComparer implementation of the custom data type
 
 That is it. It is a short post on how to do sorting of custom types without using LINQ

@@ -13,50 +13,43 @@ I was in a similar scenario where we were sending JSON data to client applicatio
 
 I have created an extension method on object which handles a generic parameter. As a first step I have first trimmed all the strings at the object level. I have done this using reflection and link where we will identify all the strings and just trim the spaces on them which is symbol. 
 
-~~~ csharp
+```csharp
+//Iterates all properties and trims the values if they are strings
+var properties = obj.GetType().GetProperties(BindingFlags.Instance | 	BindingFlags.Public)
+    .Where(prop => prop.PropertyType == typeof(string))
+    .Where(prop => prop.CanWrite && prop.CanRead);
 
-    //Iterates all properties and trims the values if they are strings
-    var properties = obj.GetType().GetProperties(BindingFlags.Instance | 	BindingFlags.Public)
-	    .Where(prop => prop.PropertyType == typeof(string))
-	    .Where(prop => prop.CanWrite && prop.CanRead);
-    
-    foreach (var property in properties)
+foreach (var property in properties)
+{
+    var value = (string) property.GetValue(obj, null);
+    if (value.HasValue())
     {
-	    var value = (string) property.GetValue(obj, null);
-	    if (value.HasValue())
-	    {
-	    var newValue = (object) value.Trim();
-	    property.SetValue(obj, newValue, null);
-	    }
+    var newValue = (object) value.Trim();
+    property.SetValue(obj, newValue, null);
     }
-
-~~~
+}
+```
 
 As a next step I tried to take care of all the list of objects so that they can each be operated individually and spaces can be trimmed on them. To be able to achieve this I have relied on recursion.
 
-~~~ csharp
-
-    // This is to take care of Lists. This iterates through each value
-    // in the list.
-    // For example, Countries which is a List<Country>
-    var baseTypeInfo = obj.GetType().BaseType;
-    if (baseTypeInfo != null && baseTypeInfo.FullName.Contains("List"))
+```csharp
+// This is to take care of Lists. This iterates through each value
+// in the list.
+// For example, Countries which is a List<Country>
+var baseTypeInfo = obj.GetType().BaseType;
+if (baseTypeInfo != null && baseTypeInfo.FullName.Contains("List"))
+{
+    var listCount = (int) obj.GetType().GetProperty("Count").GetValue(obj, null);
+    for (var innerIndex = 0; innerIndex < listCount; innerIndex++)
     {
-	    var listCount = (int) obj.GetType().GetProperty("Count").GetValue(obj, null);
-	    for (var innerIndex = 0; innerIndex < listCount; innerIndex++)
-	    {
-		    var item = obj.GetType().GetMethod("get_Item", new[] {typeof(int)}).Invoke(obj, new object[] {innerIndex});
-		    item.TrimSpaces(); // Recursive call
-	    }
+	    var item = obj.GetType().GetMethod("get_Item", new[] {typeof(int)}).Invoke(obj, new object[] {innerIndex});
+	    item.TrimSpaces(); // Recursive call
     }
-
-~~~ 
-
-
+}
+```
 Now as the last step I have taken care of other custom objects inside the object so that  also be taken care of item in the spaces.
 
-
-~~~ 
+```csharp
     // Now once we are in a complex type (for example Country) it then needs to
     // be trimmed recursively using the initial peice of code of this method
     // Hence if it is a complex type we are recursively calling TrimSpaces
@@ -70,6 +63,6 @@ Now as the last step I have taken care of other custom objects inside the object
 			customType.GetValue(obj).TrimSpaces();
     
     return obj;
-~~~ 
+```
 
 This solution is available on [github](https://github.com/USaiPavan/BlogPostCode/tree/master/TrimSpacesRecursively) and can be used in any of the projects which require the capability of trimming of objects

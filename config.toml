@@ -7,6 +7,7 @@ contentdir = "content"
 layoutdir = "layouts"
 publishdir = "public"
 canonifyurls = true
+Paginate = 2
 
 [permalinks]
     post = "/:year/:month/:filename/"
