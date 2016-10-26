@@ -24,7 +24,7 @@ canonifyurls = true
     name = "About"
     url = "/about"
 [[menu.social]]
-	pre = "<i class='fa fa-twitter fa-lg fa-fw'></i>"
+	pre = "<i class='fa fa-twitter fa-lg fa-fw' target='_blank'></i>"
     url = "https://twitter.com/usaipavan"
     identifier = "twitter"
 [[menu.social]]
@@ -33,5 +33,5 @@ canonifyurls = true
     identifier = "linkedin"
 [[menu.social]]
     pre = "<i class='fa fa-rss fa-lg fa-fw'></i>"
-    url = "https://www.linkedin.com/in/usaipavan"
+    url = "/index.xml"
     identifier = "rss"

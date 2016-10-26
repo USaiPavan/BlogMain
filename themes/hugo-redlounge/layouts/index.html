@@ -37,7 +37,7 @@
                     <br />           
                     <span class="dark-red">Tags</span><span class="decorative-marker">//</span>
                     {{ range .Params.tags }}
-                            <a class="post-tag post-tag-{{ . | urlize }}" href="{{ $Site.BaseURL}}/tags/{{ . | urlize }}" style="padding-right: 0.25em">{{ . }}</a>
+                            <a class="post-tag post-tag-{{ . | urlize }}" href="{{ $Site.BaseURL}}/tags/{{ . | urlize }}#" style="padding-right: 0.25em;font-size: 0.85rem;">{{ . }}</a>
                     {{ end }}                  
                 {{ end }}
                 {{ if .Params.categories }}

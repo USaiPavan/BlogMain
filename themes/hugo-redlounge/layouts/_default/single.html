@@ -33,7 +33,18 @@
             </h1>
             <h3 class="post-subtitle">
             	{{ .Params.subtitle }}
-            </h3>           
+            </h3>
+            {{ if not .Params.nodate }}
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>{{ .Date.Format "2" }}</sup></span><span class="post-date-separator">/</span><span class="post-date-month">{{ .Date.Format "Jan" }}</span> <span class="post-date-year">{{ .Date.Format "2006" }}</span>
+            	</span>
+            	{{ end }}
+            {{ if not .Params.noauthor }}
+            	{{ if .Params.author }}
+            		<span class="post-author-single">By <a class="post-author" {{ if .Params.authorlink }}href="{{ .Params.authorlink }}"{{ end }} target="{{ .Params.authorlinktarget }}">{{ .Params.author }}</a></span>
+            		{{ partial "authorsocial.html" . }}
+            	{{ end }}
+            {{ end }}
 
 			{{ $Site := .Site }}
 			{{ if .Params.categories }}
@@ -64,7 +75,7 @@
 				<div class="tags-list">
 					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
 					{{ range .Params.tags }}
-	                <a class="post-tag post-tag-{{ . | urlize }}" href="{{ $Site.BaseURL}}/tags/{{ . | urlize }}">{{ . }}</a>,
+	                <a class="post-tag post-tag-{{ . | urlize }}" href="{{ $Site.BaseURL}}/tags/{{ . | urlize }}" style="padding-right: 0.25em">{{ . }}</a>
 	                {{ end }}
 				</div>
 			{{ end }}
