@@ -16,5 +16,18 @@ fi
 git commit -m "$msg"
 
 # Push source and build repos.
-git push origin master
-git subtree push --prefix=public https://github.com/usaipavan/usaipavan.github.io.git gh-pages
+git push
+
+
+#Change directory to public
+cd public
+
+# Add changes to git
+git add -A
+
+# Commit changes.
+msg="rebuilding site `date`"
+git commit -m "$msg"
+
+# Push source and build repos.
+git push
