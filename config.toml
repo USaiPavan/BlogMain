@@ -14,12 +14,15 @@ canonifyurls = true
   
 [Taxonomies]
     tag = "tags"
+    category = "categories"
     series = "series"
-    series-desc = "series-desc"
 [params]
     Author = "Sai Pavan"    
 	sidebartitle = "Sai Pavan's blog"
 	sidebartagline = "My tryst with .net and software programming in general"
+[[menu.main]]
+    name = "About"
+    url = "/about"
 [[menu.social]]
 	pre = "<i class='fa fa-twitter fa-lg fa-fw'></i>"
     url = "https://twitter.com/usaipavan"

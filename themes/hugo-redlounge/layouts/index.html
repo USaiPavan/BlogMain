@@ -9,7 +9,7 @@
 
           <div class="posts">
             {{ $Site := .Site }}
-            {{ range .Site.Pages }}
+            {{ range where .Data.Pages "Section" "post" }}
             <section  class="post">
                 <header class="post-header">
                     {{ if .Params.thumbnail }}
@@ -32,6 +32,13 @@
                 {{ end }}
                 {{ if not .Params.noread }}
                     <span class="post-reading-time"><i class="fa fa-clock-o"></i> <em>{{.ReadingTime}} min. read</em></span>
+                {{ end }}
+                {{ if .Params.tags }}       
+                    <br />           
+                    <span class="dark-red">Tags</span><span class="decorative-marker">//</span>
+                    {{ range .Params.tags }}
+                            <a class="post-tag post-tag-{{ . | urlize }}" href="{{ $Site.BaseURL}}/tags/{{ . | urlize }}" style="padding-right: 0.25em">{{ . }}</a>
+                    {{ end }}                  
                 {{ end }}
                 {{ if .Params.categories }}
                 <div class="post-categories">

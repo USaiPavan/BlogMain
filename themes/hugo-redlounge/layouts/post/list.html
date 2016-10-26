@@ -32,6 +32,15 @@
               {{ if not .Params.noread }}
                 <span class="post-reading-time"><i class="fa fa-clock-o"></i> <em>{{.ReadingTime}} min. read</em></span>
               {{ end }}
+              {{ if .Params.tags }}
+                <div class="tags-list">
+                  <span class="dark-red">Tags</span><span class="decorative-marker">//</span>
+                  {{ $Site := .Site }}
+                  {{ range .Params.tags }}
+                          <a class="post-tag post-tag-{{ . | urlize }}" href="{{ $Site.BaseURL}}/tags/{{ . | urlize }}">{{ . }}</a>,
+                          {{ end }}
+                </div>
+              {{ end }}
       				{{ if .Params.categories }}
       					<div class="post-categories">
 				        {{ $Site := .Site }}
