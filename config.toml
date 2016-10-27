@@ -8,6 +8,7 @@ layoutdir = "layouts"
 publishdir = "public"
 canonifyurls = true
 Paginate = 10
+googleAnalytics = "UA-66140881-1"
 
 [permalinks]
     post = "/:year/:month/:filename/"
