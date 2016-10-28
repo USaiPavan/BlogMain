@@ -75,7 +75,7 @@
 				<div class="tags-list">
 					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
 					{{ range .Params.tags }}
-	                <a class="post-tag post-tag-{{ . | urlize }}" href="{{ $Site.BaseURL}}/tags/{{ . | urlize }}" style="padding-right: 0.25em">{{ . }}</a>
+	                <a class="post-tag post-tag-{{ . | urlize }}" href="{{ $Site.BaseURL}}/tags/{{ . | urlize }}" style="padding-right: 0.25em">{{ replace . "Sharp" "#" }}</a>
 	                {{ end }}
 				</div>
 			{{ end }}

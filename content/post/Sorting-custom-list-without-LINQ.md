@@ -2,7 +2,7 @@
 title = "Sorting a custom list without LINQ"
 draft = false
 date = "2015-10-09T09:00:00-05:00"
-Tags = ["C#", "LINQ"]
+Tags = ["CSharp", "LINQ"]
 
 +++
 

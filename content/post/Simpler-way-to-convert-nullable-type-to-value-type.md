@@ -2,7 +2,7 @@
 title = "Simpler way to convert Nullable type to Value type"
 draft = false
 date = "2016-03-18T09:00:00-05:00"
-Tags = ["C#"]
+Tags = ["CSharp"]
 
 +++
 

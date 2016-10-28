@@ -2,7 +2,7 @@
 title = "The mystery around DbEntityEntry.State"
 draft = false
 date = "2016-07-06T09:00:00-05:00"
-Tags = ["C#", "Entity Framework"]
+Tags = ["CSharp", "Entity Framework"]
 
 +++
 

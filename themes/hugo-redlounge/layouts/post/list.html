@@ -37,7 +37,7 @@
                   <span class="dark-red">Tags</span><span class="decorative-marker">//</span>
                   {{ $Site := .Site }}
                   {{ range .Params.tags }}
-                          <a class="post-tag post-tag-{{ . | urlize }}" href="{{ $Site.BaseURL}}/tags/{{ . | urlize }}">{{ . }}</a>,
+                          <a class="post-tag post-tag-{{ . | urlize }}" href="{{ $Site.BaseURL}}/tags/{{ . | urlize }}">{{ replace . "Sharp" "#" }}</a>,
                           {{ end }}
                 </div>
               {{ end }}
